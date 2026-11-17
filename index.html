@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bana Violetta</title>
+    
+    <link rel="preload" href="archivo-subset-1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./style-f69248a535d318a1.css" integrity="sha384-Qy7J7DHp8s0kKt0WadoezU9axYyNTK7S2rBry2uP+MjcvVlVEwABinU4zk130u64"/>
+    <link rel="stylesheet" href="./uPlot.min-5e0d12c918aed906.css" integrity="sha384-IfV0B7MIOYuO95kO9G5ySKPz/85zqFNOAs8iy4tkK5zd9izhJAB8b7lHrwYqqmYE"/>
+    <script src="./uPlot.iife.min-5064edaecd06f7ff.js" integrity="sha384-Gx3t0zdBAuQOuvvmaLZj7HKEiSgWTAs+VdtNY7wt19QDPTDQjFIwAuXDj0zeN00c"></script>
+    <script src="./replay-4b80b2c295485327.js" integrity="sha384-dN5jPhwWI+v3ADXXczX4wbWFLLsWUmLDMt2EToqtFNjgZH5WLtGCPKeH82Y6sOjB"></script>
+    
+<script type="module">
+import init, * as bindings from './box-web-331874f62833d10f.js';
+const wasm = await init({ module_or_path: './box-web-7223fffdc7260161_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    <script>
+      // If the app fails to start (a phone has no developer console), show why instead of a
+      // blank page.
+      (function () {
+        function show(message) {
+          var box = document.getElementById("boot-error");
+          if (!box) {
+            box = document.createElement("pre");
+            box.id = "boot-error";
+            box.style.cssText = "white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace;padding:16px;margin:16px;border:1px solid #d03b3b;border-radius:8px;color:#d03b3b";
+            box.textContent = "The app could not start:\n";
+            (document.body || document.documentElement).appendChild(box);
+          }
+          box.textContent += "\n" + message;
+        }
+        window.addEventListener("error", function (e) {
+          show((e.message || "error") + (e.filename ? " (" + e.filename + ":" + e.lineno + ")" : ""));
+        }, true);
+        window.addEventListener("unhandledrejection", function (e) { show(String(e.reason && (e.reason.stack || e.reason))); });
+        // A Rust panic reaches the browser as "unreachable executed"; the panic message itself
+        // goes to console.error, so show that too.
+        var consoleError = console.error;
+        console.error = function () {
+          var text = Array.prototype.join.call(arguments, " ");
+          if (text.indexOf("panicked at") >= 0) show(text.split("\n\nStack:")[0]);
+          return consoleError.apply(console, arguments);
+        };
+        setTimeout(function () {
+          if (!document.querySelector(".rp, .rp-loading")) show("Still not running after 20 s: " + navigator.userAgent);
+        }, 20000);
+      })();
+    </script>
+  <link rel="modulepreload" href="./box-web-331874f62833d10f.js" crossorigin="anonymous" integrity="sha384-M5sT9ncx3f0xAMZGaNBRV2nFUM9b3CPgRUJcjZxlh7N/lBa7qdZvHofFPE1fGYmP"><link rel="preload" href="./box-web-7223fffdc7260161_bg.wasm" crossorigin="anonymous" integrity="sha384-310mE2vTRsIZwyLfFZ+zX7k82AHJbLNhU5+hzFQqx5Uqd5s48d8kXVZzkGDUQGOt" as="fetch" type="application/wasm"></head>
+  <body></body>
+</html>
